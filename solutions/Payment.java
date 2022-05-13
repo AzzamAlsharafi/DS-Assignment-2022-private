@@ -17,17 +17,17 @@ public class Payment {
 
         long previousTime = firstTime;
 
-        while (true){
+        while (true) {
             String[] line = scanner.nextLine().split(" ");
 
-            if(line.length == 3){
+            if (line.length == 3) {
                 long time = Long.parseLong(line[0]);
 
                 long startTime = time - startingTimeFromTier(line[2].charAt(0));
 
                 queue.offer(new txnId(line[1], startTime));
 
-                if((time / 1000) - (previousTime / 1000) > 0){
+                if ((time / 1000) - (previousTime / 1000) > 0) {
                     for (int i = 0; i < 100; i++) {
                         System.out.print(queue.poll() + " ");
                     }
@@ -36,7 +36,7 @@ public class Payment {
 
                 previousTime = time;
             } else {
-                if(line[0].equals("EXIT")){
+                if (line[0].equals("EXIT")) {
                     return;
                 } else {
                     queue.clear();
@@ -45,23 +45,24 @@ public class Payment {
         }
     }
 
-    public static long startingTimeFromTier(char firstChar){
-        return switch (firstChar) {
-            case 'B' -> // Bronze
-                    0;
-            case 'S' -> // Silver
-                    1000;
-            case 'G' -> // Gold
-                    2000;
-            case 'P' -> // Platinum
-                    3000;
-            default -> -1; // Won't happen.
-        };
+    public static long startingTimeFromTier(char firstChar) {
+        switch (firstChar) {
+            case 'B': // Bronze
+                return 0;
+            case 'S': // Silver
+                return 1000;
+            case 'G': // Gold
+                return 2000;
+            case 'P': // Platinum
+                return 3000;
+            default: // Won't happen.
+                return -1;
+        }
     }
 
 }
 
-class txnId implements Comparable<txnId>{
+class txnId implements Comparable<txnId> {
     String id;
     long time;
 
