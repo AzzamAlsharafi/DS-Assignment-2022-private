@@ -17,7 +17,7 @@ public class Payment {
 
         long previousTime = firstTime;
 
-        while (true) {
+        while (scanner.hasNextLine()) {
             String[] line = scanner.nextLine().split(" ");
 
             if (line.length == 3) {
