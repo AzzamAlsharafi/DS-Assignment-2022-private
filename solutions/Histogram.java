@@ -41,8 +41,8 @@ public class Histogram {
                 }
             }
 
-            System.out.println(Arrays.toString(cutoffs));
-            System.out.println(Arrays.toString(binsCount));
+            System.out.println(Arrays.toString(cutoffs).replace("[", "").replace("]", "").replace(",", ""));
+            System.out.println(Arrays.toString(binsCount).replace("[", "").replace("]", "").replace(",", ""));
         }
     }
 
