@@ -28,7 +28,7 @@ public class Payment {
                 queue.offer(new txnId(line[1], startTime));
 
                 if ((time / 1000) - (previousTime / 1000) > 0) {
-                    for (int i = 0; i < 100; i++) {
+                    for (int i = 0; i < (Math.min(queue.size(), 100)); i++) {
                         System.out.print(queue.poll() + " ");
                     }
                     System.out.println();
