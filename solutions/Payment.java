@@ -1,18 +1,10 @@
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class Payment {
     
     public static void main(String[] args) {
-        Scanner scanner = null;
-        try {
-            scanner = new Scanner(new FileInputStream("C:\\Users\\Azzam\\Documents\\University\\Semester 2\\WIA1002 - Data Structure\\Assignments\\DS-Assignment-2022-private\\tasks\\payment\\cases\\0.txt"));
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }//(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         PriorityQueue<txnId> queue = new PriorityQueue<>();
 
@@ -49,6 +41,7 @@ public class Payment {
                 previousTime = time;
             } else {
                 if(line[0].equals("EXIT")){
+                    scanner.close();
                     return;
                 } else {
                     queue.clear();
