@@ -13,6 +13,10 @@ public class Payment {
 
         String[] firstLine = scanner.nextLine().split(" ");
 
+        if(firstLine[0].equals("EXIT")){
+            return;
+        }
+
         long firstTime = Long.parseLong(firstLine[0]);
 
         int lineNumber = 0;
