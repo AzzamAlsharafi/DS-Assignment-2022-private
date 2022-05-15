@@ -1,43 +1,54 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class Payment {
-
+    
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(new FileInputStream("C:\\Users\\Azzam\\Documents\\University\\Semester 2\\WIA1002 - Data Structure\\Assignments\\DS-Assignment-2022-private\\tasks\\payment\\cases\\0.txt"));
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }//(System.in);
 
         PriorityQueue<txnId> queue = new PriorityQueue<>();
 
         String[] firstLine = scanner.nextLine().split(" ");
-        long firstTime = Long.parseLong(firstLine[0]);
 
-        long firstStartTime = firstTime - startingTimeFromTier(firstLine[2].charAt(0));
+        long firstTime = Long.parseLong(firstLine[0]) + startingTimeFromTier(firstLine[2].charAt(0));
 
-        queue.offer(new txnId(firstLine[1], firstStartTime));
+        int lineNumber = 0;
+
+        queue.offer(new txnId(firstLine[1], firstTime, lineNumber));
 
         long previousTime = firstTime;
 
-        while (scanner.hasNextLine()) {
+        while(true){
             String[] line = scanner.nextLine().split(" ");
 
-            if (line.length == 3) {
-                long time = Long.parseLong(line[0]);
-
-                long startTime = time - startingTimeFromTier(line[2].charAt(0));
-
-                queue.offer(new txnId(line[1], startTime));
-
-                if ((time / 1000) - (previousTime / 1000) > 0) {
+            if(line.length == 3){
+                long time = Long.parseLong(line[0]) + startingTimeFromTier(line[2].charAt(0));
+    
+                lineNumber++;
+        
+                queue.offer(new txnId(line[1], time, lineNumber));
+                
+                if((((time / 1000) - (previousTime / 1000)) > 1 & (time % 1000 != 0)) || previousTime % 1000 == 0){
                     int toPrint = Math.min(queue.size(), 100);
+
                     for (int i = 0; i < toPrint; i++) {
                         System.out.print(queue.poll() + " ");
                     }
+
                     System.out.println();
                 }
 
                 previousTime = time;
             } else {
-                if (line[0].equals("EXIT")) {
+                if(line[0].equals("EXIT")){
                     return;
                 } else {
                     queue.clear();
@@ -66,15 +77,21 @@ public class Payment {
 class txnId implements Comparable<txnId> {
     String id;
     long time;
+    int insertionOrder;
 
-    public txnId(String id, long time) {
+    public txnId(String id, long time, int insertionOrder) {
         this.id = id;
         this.time = time;
+        this.insertionOrder = insertionOrder;
     }
 
     @Override
     public int compareTo(txnId o) {
-        return Long.compare(time, o.time);
+        int compare = Long.compare(time, o.time);
+        if (compare == 0) {
+            return Integer.compare(insertionOrder, o.insertionOrder);
+        }
+        return compare;
     }
 
     @Override
