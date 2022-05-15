@@ -1,18 +1,25 @@
+import java.sql.Time;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class Payment {
     
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        system(new Scanner(System.in));
+    }
 
+    public static void system(Scanner scanner){
         PriorityQueue<txnId> queue = new PriorityQueue<>();
+
+        String[] firstLine = scanner.nextLine().split(" ");
+
+        long firstTime = Long.parseLong(firstLine[0]);
 
         int lineNumber = 0;
 
-        long previousTime = 0;
+        queue.offer(new txnId(firstLine[1], firstTime - startingTimeFromTier(firstLine[2].charAt(0)), lineNumber));
 
-        boolean reboot = true;
+        long previousTime = firstTime;
 
         while(scanner.hasNextLine()){
             String[] line = scanner.nextLine().split(" ");
@@ -22,16 +29,6 @@ public class Payment {
                 long time = Long.parseLong(line[0]);
             
                 queue.offer(new txnId(line[1], time - startingTimeFromTier(line[2].charAt(0)), lineNumber));
-                
-                if(reboot){
-                    lineNumber = 0;
-
-                    previousTime = time;
-
-                    reboot = false;
-
-                    continue;
-                }
 
                 if(((((time / 1000) - (previousTime / 1000)) > 0) & (time % 1000 != 0)) || previousTime % 1000 == 0){
                     int toPrint = Math.min(queue.size(), 100);
@@ -49,8 +46,7 @@ public class Payment {
                     scanner.close();
                     return;
                 } else {
-                    queue.clear();
-                    reboot = false;
+                    system(scanner);
                 }
             }
         }
