@@ -15,11 +15,11 @@ for case in sorted(["0.txt", "1.txt"]):
                 print(line, end="")
             else:
                 ans = set(f.readline().strip().split())
-                # user_ans = set(input().strip().split())
+                user_ans = set(input().strip().split())
 
-                # if ans != user_ans:
-                #     print(len(ans))
-                #     print(len(user_ans))
-                #     raise ValueError("Wrong answer")
+                if ans != user_ans:
+                    print(len(ans))
+                    print(len(user_ans))
+                    raise ValueError("Wrong answer")
 
 print("EXIT", flush=True)
