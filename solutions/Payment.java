@@ -1,3 +1,5 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
@@ -10,11 +12,11 @@ public class Payment {
 
         String[] firstLine = scanner.nextLine().split(" ");
 
-        long firstTime = Long.parseLong(firstLine[0]) + startingTimeFromTier(firstLine[2].charAt(0));
+        long firstTime = Long.parseLong(firstLine[0]);
 
         int lineNumber = 0;
 
-        queue.offer(new txnId(firstLine[1], firstTime, lineNumber));
+        queue.offer(new txnId(firstLine[1], firstTime - startingTimeFromTier(firstLine[2].charAt(0)), lineNumber));
 
         long previousTime = firstTime;
 
@@ -22,13 +24,13 @@ public class Payment {
             String[] line = scanner.nextLine().split(" ");
 
             if(line.length == 3){
-                long time = Long.parseLong(line[0]) + startingTimeFromTier(line[2].charAt(0));
+                long time = Long.parseLong(line[0]);
     
                 lineNumber++;
         
-                queue.offer(new txnId(line[1], time, lineNumber));
+                queue.offer(new txnId(line[1], time - startingTimeFromTier(line[2].charAt(0)), lineNumber));
                 
-                if((((time / 1000) - (previousTime / 1000)) > 1 & (time % 1000 != 0)) || previousTime % 1000 == 0){
+                if(((((time / 1000) - (previousTime / 1000)) > 0) & (time % 1000 != 0)) || previousTime % 1000 == 0){
                     int toPrint = Math.min(queue.size(), 100);
 
                     for (int i = 0; i < toPrint; i++) {
