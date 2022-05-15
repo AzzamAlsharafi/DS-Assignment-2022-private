@@ -20,12 +20,11 @@ public class Payment {
 
         while(true){
             String[] line = scanner.nextLine().split(" ");
+            lineNumber++;
 
             if(line.length == 3){
                 long time = Long.parseLong(line[0]);
-    
-                lineNumber++;
-        
+            
                 queue.offer(new txnId(line[1], time - startingTimeFromTier(line[2].charAt(0)), lineNumber));
                 
                 if(((((time / 1000) - (previousTime / 1000)) > 0) & (time % 1000 != 0)) || previousTime % 1000 == 0){
