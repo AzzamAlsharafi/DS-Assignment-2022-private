@@ -8,15 +8,11 @@ public class Payment {
 
         PriorityQueue<txnId> queue = new PriorityQueue<>();
 
-        String[] firstLine = scanner.nextLine().split(" ");
-
-        long firstTime = Long.parseLong(firstLine[0]);
-
         int lineNumber = 0;
 
-        queue.offer(new txnId(firstLine[1], firstTime - startingTimeFromTier(firstLine[2].charAt(0)), lineNumber));
+        long previousTime = 0;
 
-        long previousTime = firstTime;
+        boolean reboot = true;
 
         while(scanner.hasNextLine()){
             String[] line = scanner.nextLine().split(" ");
@@ -27,6 +23,16 @@ public class Payment {
             
                 queue.offer(new txnId(line[1], time - startingTimeFromTier(line[2].charAt(0)), lineNumber));
                 
+                if(reboot){
+                    lineNumber = 0;
+
+                    previousTime = time;
+
+                    reboot = false;
+
+                    continue;
+                }
+
                 if(((((time / 1000) - (previousTime / 1000)) > 0) & (time % 1000 != 0)) || previousTime % 1000 == 0){
                     int toPrint = Math.min(queue.size(), 100);
 
@@ -44,6 +50,7 @@ public class Payment {
                     return;
                 } else {
                     queue.clear();
+                    reboot = false;
                 }
             }
         }
