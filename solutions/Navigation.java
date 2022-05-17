@@ -66,7 +66,7 @@ public class Navigation {
             }
 
             if(x > -1){
-                throw new Exception("HELLO + " + scanner.hasNextLine() +" "+ scanner.hasNextInt() +" "+ scanner.hasNext());
+                throw new Exception("HELLO + ");
             }
         }
     }
