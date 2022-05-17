@@ -1,4 +1,4 @@
-
+// package Q2;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public class Navigation {
         scanner.nextLine();
         for (int i = 0; i < q; i++) {
             String query = scanner.nextLine();
-            String[] splitQuery = query.split(" => ");
+            String[] splitQuery = query.split(" -> ");
             HashSet<String> visited = new HashSet<>();
             ArrayList<String> path = new ArrayList<>();
             if (pathFinder(graph, splitQuery[0], splitQuery[1], visited, path)) {
