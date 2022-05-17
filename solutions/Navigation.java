@@ -48,7 +48,13 @@ public class Navigation {
             if (pathFinder(graph, splitQuery[0], splitQuery[1], visited, path)) {
                 for (int j = 0; j < path.size(); j++) {
                     if (j == path.size() - 1) {
-                        System.out.println(path.get(j));
+                        if (i == q - 1) {
+                            System.out.print(path.get(j));
+
+                        }else {
+                            System.out.println(path.get(j));
+
+                        }
                     }
                     else {
                         System.out.print(path.get(j) + " -> ");
