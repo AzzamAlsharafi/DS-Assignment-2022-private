@@ -14,7 +14,7 @@ public class Navigation {
 
         for (int x = 0; x < t; x++) {
             if(x > 0){
-                throw new Exception("HELLO + nextLine? nextInt? next? what?");// + scanner.hasNextLine() + scanner.hasNextInt() + scanner.hasNext());
+                throw new Exception("HELLO + " + scanner.hasNextLine() +" "+ scanner.hasNextInt() +" "+ scanner.hasNext());
             }
             int n = scanner.nextInt();
             HashMap<String, ArrayList<String>> graph = new HashMap<String, ArrayList<String>>();
