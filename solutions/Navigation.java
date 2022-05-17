@@ -44,6 +44,7 @@ public class Navigation {
             String[] splitQuery = query.split(" -> ");
             HashSet<String> visited = new HashSet<>();
             ArrayList<String> path = new ArrayList<>();
+
             if (pathFinder(graph, splitQuery[0], splitQuery[1], visited, path)) {
                 for (int j = 0; j < path.size(); j++) {
                     if (j == path.size() - 1) {
