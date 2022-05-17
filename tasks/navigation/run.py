@@ -6,7 +6,7 @@ CASE_DIR = os.path.join(os.path.dirname(__file__), "cases")
 
 test_cases = next(os.walk(CASE_DIR))[2]
 print(len(test_cases))
-for case in sorted(test_cases):
+for case in sorted(["0.txt"]):
     with open(os.path.join(CASE_DIR, case), 'r') as f:
         num_rails = int(f.readline())
         print(num_rails)
