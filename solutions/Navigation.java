@@ -1,4 +1,3 @@
-package Q2;
 
 
 import java.io.FileNotFoundException;
@@ -7,7 +6,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Scanner;
 
-public class Solution {
+public class Navigation {
     public static void main(String[] args) throws FileNotFoundException {
 
         // System.setIn(new FileInputStream("src/Q2/input.txt"));
