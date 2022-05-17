@@ -13,7 +13,12 @@ public class Navigation {
         int t = scanner.nextInt();
 
         for (int x = 0; x < t; x++) {
-            int n = scanner.nextInt();
+            test(scanner);
+        }
+    }
+
+    public static void test(Scanner scanner){
+        int n = scanner.nextInt();
             HashMap<String, ArrayList<String>> graph = new HashMap<String, ArrayList<String>>();
             scanner.nextLine();
             for (int i = 0; i < n; i++) {
@@ -64,7 +69,6 @@ public class Navigation {
                 }
 
             }
-        }
     }
 
     public static boolean pathFinder(HashMap<String, ArrayList<String>> g,
