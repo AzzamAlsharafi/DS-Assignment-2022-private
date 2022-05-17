@@ -40,6 +40,6 @@ for case in sorted(test_cases):
                     if j not in adj[i]:
                         raise ValueError(f"There is no train from {i} to {j}")
             except EOFError as e:
-                raise ValueError(f"EOFERROR: this is case {case} in query {_}, which is {line}")
+                raise ValueError(f"EOFERROR: this is case {case} in query {_}, which is {line}. INPUT: {input()}")
 
 print("EXIT", flush=True)
