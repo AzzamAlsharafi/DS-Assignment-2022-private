@@ -12,61 +12,62 @@ public class Navigation {
         Scanner scanner = new Scanner(System.in);
         int t = scanner.nextInt();
 
-        throw new Exception("HELLO GITHUB");
-                
-        // for (int x = 0; x < t; x++) {
-        //     int n = scanner.nextInt();
-        //     HashMap<String, ArrayList<String>> graph = new HashMap<String, ArrayList<String>>();
-        //     scanner.nextLine();
-        //     for (int i = 0; i < n; i++) {
-        //         String line = scanner.nextLine();
+        for (int x = 0; x < t; x++) {
+            if(x > 0){
+                throw new Exception("HELLO + " + x);
+            }
+            int n = scanner.nextInt();
+            HashMap<String, ArrayList<String>> graph = new HashMap<String, ArrayList<String>>();
+            scanner.nextLine();
+            for (int i = 0; i < n; i++) {
+                String line = scanner.nextLine();
 
-        //         String[] splitted = line.split(" => ");
+                String[] splitted = line.split(" => ");
 
-        //         String a = splitted[0];
-        //         String b = splitted[1];
-        //         if (!graph.containsKey(a)) {
-        //             ArrayList<String> list = new ArrayList<>();
-        //             graph.put(a, list);
-        //         }
+                String a = splitted[0];
+                String b = splitted[1];
+                if (!graph.containsKey(a)) {
+                    ArrayList<String> list = new ArrayList<>();
+                    graph.put(a, list);
+                }
 
-        //         if (!graph.containsKey(b)) {
-        //             ArrayList<String> list1 = new ArrayList<>();
-        //             graph.put(b, list1);
-        //         }
+                if (!graph.containsKey(b)) {
+                    ArrayList<String> list1 = new ArrayList<>();
+                    graph.put(b, list1);
+                }
 
-        //         graph.get(a).add(b);
+                graph.get(a).add(b);
 
-        //         graph.get(b).add(a);
+                graph.get(b).add(a);
 
-        //     }
+            }
 
-        //     int q = scanner.nextInt();
-        //     scanner.nextLine();
-        //     for (int i = 0; i < q; i++) {
-        //         String query = scanner.nextLine();
-        //         String[] splitQuery = query.split(" -> ");
-        //         HashSet<String> visited = new HashSet<>();
-        //         ArrayList<String> path = new ArrayList<>();
+            int q = scanner.nextInt();
+            scanner.nextLine();
+            for (int i = 0; i < q; i++) {
+                String query = scanner.nextLine();
+                String[] splitQuery = query.split(" -> ");
+                HashSet<String> visited = new HashSet<>();
+                ArrayList<String> path = new ArrayList<>();
 
-        //         if (pathFinder(graph, splitQuery[0], splitQuery[1], visited, path)) {
-        //             for (int j = 0; j < path.size(); j++) {
-        //                 if (j == path.size() - 1) {
-        //                     if (i == q - 1) {
-        //                         System.out.print(path.get(j));
+                if (pathFinder(graph, splitQuery[0], splitQuery[1], visited, path)) {
+                    for (int j = 0; j < path.size(); j++) {
+                        if (j == path.size() - 1) {
+                            if (i == q - 1) {
+                                System.out.print(path.get(j));
 
-        //                     } else {
-        //                         System.out.println(path.get(j));
+                            } else {
+                                System.out.println(path.get(j));
 
-        //                     }
-        //                 } else {
-        //                     System.out.print(path.get(j) + " -> ");
-        //                 }
-        //             }
-        //         }
+                            }
+                        } else {
+                            System.out.print(path.get(j) + " -> ");
+                        }
+                    }
+                }
 
-        //     }
-        // }
+            }
+        }
     }
 
     public static boolean pathFinder(HashMap<String, ArrayList<String>> g,
