@@ -1,13 +1,16 @@
-import java.io.FileInputStream;
+package Q2;
+
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Scanner;
 
-public class Navigation {
+public class Solution {
     public static void main(String[] args) throws FileNotFoundException {
 
+        // System.setIn(new FileInputStream("src/Q2/input.txt"));
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
 
@@ -43,15 +46,27 @@ public class Navigation {
             String query = scanner.nextLine();
             String[] splitQuery = query.split(" => ");
             HashSet<String> visited = new HashSet<>();
-            System.out.println(pathFinder(graph, splitQuery[0], splitQuery[1], visited));
+            ArrayList<String> path = new ArrayList<>();
+            if (pathFinder(graph, splitQuery[0], splitQuery[1], visited, path)) {
+                for (int j = 0; j < path.size(); j++) {
+                    if (j == path.size() - 1) {
+                        System.out.println(path.get(j));
+                    }
+                    else {
+                        System.out.print(path.get(j) + " -> ");
+                    }
+                }
+            }
+
         }
     }
 
     public static boolean pathFinder(HashMap<String, ArrayList<String>> g,
                                      String x,
                                      String y,
-                                     HashSet<String> vis) {
+                                     HashSet<String> vis, ArrayList<String> p) {
         if (x.equalsIgnoreCase(y)) {
+            p.add(x);
             return true;
         }
 
@@ -59,11 +74,15 @@ public class Navigation {
             return false;
         }
 
+        p.add(x);
         vis.add(x);
 
         for (String s: g.get(x)) {
-            if (pathFinder(g, s, y, vis)) {
+            if (pathFinder(g, s, y, vis, p)) {
                 return true;
+            }
+            else {
+                p.remove(p.size() - 1);
             }
         }
 
