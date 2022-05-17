@@ -11,6 +11,7 @@ public class Navigation {
 
         // System.setIn(new FileInputStream("src/Q2/input.txt"));
         Scanner scanner = new Scanner(System.in);
+        scanner.nextInt();
         int n = scanner.nextInt();
         HashMap<String, ArrayList<String>> graph = new HashMap<String, ArrayList<String>>();
         scanner.nextLine();
