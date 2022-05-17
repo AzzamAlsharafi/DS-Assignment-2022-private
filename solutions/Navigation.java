@@ -13,10 +13,10 @@ public class Navigation {
         int t = scanner.nextInt();
 
         for (int x = 0; x < t; x++) {
-            if(x > 0){
-                throw new Exception("HELLO + " + x);
-            }
             int n = scanner.nextInt();
+            if(x > 0){
+                throw new Exception("HELLO + " + n);
+            }
             HashMap<String, ArrayList<String>> graph = new HashMap<String, ArrayList<String>>();
             scanner.nextLine();
             for (int i = 0; i < n; i++) {
