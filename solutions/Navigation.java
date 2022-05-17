@@ -1,4 +1,4 @@
-// package Q2;
+//package Q2;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Navigation {
     public static void main(String[] args) throws FileNotFoundException {
 
-        // System.setIn(new FileInputStream("src/Q2/input.txt"));
+        //System.setIn(new FileInputStream("src/Q2/input.txt"));
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
 
@@ -81,7 +81,9 @@ public class Navigation {
                 return true;
             }
             else {
-                p.remove(p.size() - 1);
+                if (p.size() >= 2) {
+                    p.remove(p.size()-1);
+                }
             }
         }
 
