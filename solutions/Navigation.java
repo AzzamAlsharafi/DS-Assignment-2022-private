@@ -1,4 +1,4 @@
-// package Q2;
+//package Q2;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -63,7 +63,7 @@ public class Navigation {
                                      String y,
                                      HashSet<String> vis, ArrayList<String> p) {
 
-        p.add(x);
+
 
         if (x.equalsIgnoreCase(y)) {
             return true;
@@ -72,7 +72,7 @@ public class Navigation {
         if (vis.contains(x)) {
             return false;
         }
-
+        p.add(x);
         vis.add(x);
 
         for (String s: g.get(x)) {
