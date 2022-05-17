@@ -13,8 +13,11 @@ public class Navigation {
         int t = scanner.nextInt();
 
         for (int x = 0; x < t; x++) {
-            int n = scanner.nextInt();
+            int n = 0;
+            if(x == 0)
+            n = scanner.nextInt();
             HashMap<String, ArrayList<String>> graph = new HashMap<String, ArrayList<String>>();
+            if(x == 0)
             scanner.nextLine();
             for (int i = 0; i < n; i++) {
                 String line = scanner.nextLine();
@@ -39,10 +42,16 @@ public class Navigation {
 
             }
 
-            int q = scanner.nextInt();
+            int q = 0;
+            if(x == 0)
+            q = scanner.nextInt();
+            
+            if(x == 0)
             scanner.nextLine();
             for (int i = 0; i < q; i++) {
-                String query = scanner.nextLine();
+                String query = "";
+                if(x == 0)
+                query = scanner.nextLine();
                 String[] splitQuery = query.split(" -> ");
                 HashSet<String> visited = new HashSet<>();
                 ArrayList<String> path = new ArrayList<>();
@@ -63,10 +72,6 @@ public class Navigation {
                     }
                 }
 
-            }
-
-            if(x > -1){
-                throw new Exception("HELLO + ");
             }
         }
     }
