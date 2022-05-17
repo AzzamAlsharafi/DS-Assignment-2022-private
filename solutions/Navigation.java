@@ -13,9 +13,7 @@ public class Navigation {
         int t = scanner.nextInt();
 
         for (int x = 0; x < t; x++) {
-            int n = 0;
-            if(x == 0)
-                n = scanner.nextInt();
+            int n = scanner.nextInt();
             if(x > 0){
                 throw new Exception("HELLO + " + n);
             }
