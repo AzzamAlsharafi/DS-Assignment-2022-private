@@ -10,7 +10,9 @@ public class Navigation {
     public static void main(String[] args) throws FileNotFoundException {
         //System.setIn(new FileInputStream("src/Q2/input.txt"));
         Scanner scanner = new Scanner(System.in);
-        scanner.nextInt();
+        int t = scanner.nextInt();
+        
+        for (int x = 0; x < t; x++) {
         int n = scanner.nextInt();
         HashMap<String, ArrayList<String>> graph = new HashMap<String, ArrayList<String>>();
         scanner.nextLine();
@@ -63,6 +65,7 @@ public class Navigation {
             }
 
         }
+    }
     }
 
     public static boolean pathFinder(HashMap<String, ArrayList<String>> g,
