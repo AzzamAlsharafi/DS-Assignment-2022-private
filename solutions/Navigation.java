@@ -13,9 +13,6 @@ public class Navigation {
         int t = scanner.nextInt();
 
         for (int x = 0; x < t; x++) {
-            if(x > 0){
-                throw new Exception("HELLO + " + scanner.hasNextLine() +" "+ scanner.hasNextInt() +" "+ scanner.hasNext());
-            }
             int n = scanner.nextInt();
             HashMap<String, ArrayList<String>> graph = new HashMap<String, ArrayList<String>>();
             scanner.nextLine();
@@ -66,6 +63,10 @@ public class Navigation {
                     }
                 }
 
+            }
+
+            if(x > -1){
+                throw new Exception("HELLO + " + scanner.hasNextLine() +" "+ scanner.hasNextInt() +" "+ scanner.hasNext());
             }
         }
     }
