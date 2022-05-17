@@ -1,4 +1,4 @@
-//package Q2;
+package Q2;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -9,12 +9,10 @@ import java.util.Scanner;
 public class Navigation {
     public static void main(String[] args) throws FileNotFoundException {
 
-        //System.setIn(new FileInputStream("src/Q2/input.txt"));
+        // System.setIn(new FileInputStream("src/Q2/input.txt"));
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
-
         HashMap<String, ArrayList<String>> graph = new HashMap<String, ArrayList<String>>();
-
         scanner.nextLine();
         for (int i = 0; i < n; i++) {
             String line = scanner.nextLine();
@@ -81,7 +79,7 @@ public class Navigation {
                 return true;
             }
             else {
-                if (p.size() >= 2) {
+                if (!p.isEmpty()) {
                     p.remove(p.size()-1);
                 }
             }
