@@ -14,7 +14,9 @@ public class Navigation {
 
         for (int x = 0; x < t; x++) {
             test(scanner);
-            throw new Exception("message");
+            if(x > 0){
+                throw new Exception("message");
+            }
         }
     }
 
