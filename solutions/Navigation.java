@@ -8,8 +8,7 @@ import java.util.Scanner;
 
 public class Navigation {
     public static void main(String[] args) throws FileNotFoundException {
-
-        // System.setIn(new FileInputStream("src/Q2/input.txt"));
+        //System.setIn(new FileInputStream("src/Q2/input.txt"));
         Scanner scanner = new Scanner(System.in);
         scanner.nextInt();
         int n = scanner.nextInt();
@@ -63,6 +62,9 @@ public class Navigation {
                                      String x,
                                      String y,
                                      HashSet<String> vis, ArrayList<String> p) {
+
+        p.add(x);
+
         if (x.equalsIgnoreCase(y)) {
             p.add(x);
             return true;
@@ -72,20 +74,14 @@ public class Navigation {
             return false;
         }
 
-        p.add(x);
         vis.add(x);
 
         for (String s: g.get(x)) {
             if (pathFinder(g, s, y, vis, p)) {
                 return true;
             }
-            else {
-                if (!p.isEmpty()) {
-                    p.remove(p.size()-1);
-                }
-            }
         }
-
+        p.remove(p.size() - 1);
         return false;
 
     }
