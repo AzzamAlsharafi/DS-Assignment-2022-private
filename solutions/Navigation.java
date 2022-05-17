@@ -13,7 +13,8 @@ public class Navigation {
         int t = scanner.nextInt();
 
         for (int x = 0; x < t; x++) {
-            test(scanner);
+            throw new Exception("message");
+            // test(scanner);
         }
     }
 
