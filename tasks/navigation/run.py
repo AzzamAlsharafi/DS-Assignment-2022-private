@@ -1,4 +1,5 @@
 from itertools import chain
+from msilib.schema import Error
 import random
 import os
 
@@ -30,13 +31,16 @@ for case in sorted(test_cases):
             print(line, end="")
             src, dst = line.strip().split(" -> ")
 
-            user_path = list(map(str.strip, input().split("->")))
-            if user_path[0] != src:
-                raise ValueError("This path doesnt start at the starting station!")
-            if user_path[-1] != dst:
-                raise ValueError("This path doesnt end at the destination!")
-            for i, j in zip(user_path, user_path[1:]):
-                if j not in adj[i]:
-                    raise ValueError(f"There is no train from {i} to {j}")
+            try:
+                user_path = list(map(str.strip, input().split("->")))
+                if user_path[0] != src:
+                    raise ValueError("This path doesnt start at the starting station!")
+                if user_path[-1] != dst:
+                    raise ValueError("This path doesnt end at the destination!")
+                for i, j in zip(user_path, user_path[1:]):
+                    if j not in adj[i]:
+                        raise ValueError(f"There is no train from {i} to {j}")
+            except EOFError as e:
+                raise Error(f"EOFERROR: this is case {case} in query {_}, which is {line}")
 
 print("EXIT", flush=True)
