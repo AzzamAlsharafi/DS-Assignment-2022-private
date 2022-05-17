@@ -66,7 +66,6 @@ public class Navigation {
         p.add(x);
 
         if (x.equalsIgnoreCase(y)) {
-            p.add(x);
             return true;
         }
 
