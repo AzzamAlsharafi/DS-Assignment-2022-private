@@ -43,11 +43,13 @@ public class Navigation {
                 String[] line = scanner.nextLine().split(" -> ");
                 
                 ArrayList<String> path = getPath(graph, line[0], line[1], new ArrayList<>());
-                System.out.println("QUERY");
+                
+                path.add("TEST");
+                path.add("TEST?");
 
-                // if(path.size() > 0){
-                //     System.out.println(String.join(" -> ", path));
-                // }
+                if(path.size() > 0){
+                    System.out.println(String.join(" -> ", path));
+                }
             }
         }
 
