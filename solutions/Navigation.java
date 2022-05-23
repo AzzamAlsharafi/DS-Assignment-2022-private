@@ -42,8 +42,8 @@ public class Navigation {
             for (int j = 0; j < queries; j++) {
                 String[] line = scanner.nextLine().split(" -> ");
                 
+                ArrayList<String> path = getPath(graph, line[0], line[1], new ArrayList<>());
                 System.out.println("QUERY");
-                // ArrayList<String> path = getPath(graph, line[0], line[1], new ArrayList<>());
 
                 // if(path.size() > 0){
                 //     System.out.println(String.join(" -> ", path));
