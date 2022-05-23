@@ -40,10 +40,9 @@ public class Navigation {
             scanner.nextLine(); // Go to new line
 
             for (int j = 0; j < queries; j++) {
-                scanner.nextLine();
-                System.out.println("QUERY");
-                // String[] line = scanner.nextLine().split(" -> ");
+                String[] line = scanner.nextLine().split(" -> ");
                 
+                System.out.println("QUERY");
                 // ArrayList<String> path = getPath(graph, line[0], line[1], new ArrayList<>());
 
                 // if(path.size() > 0){
