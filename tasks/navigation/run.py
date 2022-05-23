@@ -43,7 +43,7 @@ for case in sorted(test_cases):
                 raise ValueError("This path doesnt end at the destination!")
             for i, j in zip(user_path, user_path[1:]):
                 if j not in adj[i]:
-                    raise ValueError(f"There is no train from {i} to {j}")
+                    raise ValueError(f"There is no train from {i} to {j}, {MYCASES}, {MYQUERIES}")
             MYQUERIES += 1
     MYCASES += 1
 
