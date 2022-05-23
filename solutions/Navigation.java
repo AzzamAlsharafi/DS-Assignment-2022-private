@@ -1,4 +1,7 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -42,10 +45,7 @@ public class Navigation {
             for (int j = 0; j < queries; j++) {
                 String[] line = scanner.nextLine().split(" -> ");
                 
-                ArrayList<String> path = getPath(graph, line[0], line[1], new ArrayList<>());
-                
-                path.add("TEST");
-                path.add("TEST?");
+                ArrayList<String> path = getPath(graph, line[0], line[1], new ArrayList<>(), new ArrayList<>());
 
                 if(path.size() > 0){
                     System.out.println(String.join(" -> ", path));
@@ -56,7 +56,28 @@ public class Navigation {
         scanner.close();
     }
 
-    public static ArrayList<String> getPath(HashMap<String, ArrayList<String>> graph, String src, String dest, ArrayList<String> path){
+    public static ArrayList<String> getPath(HashMap<String, ArrayList<String>> graph, String src, String dest, ArrayList<String> path, ArrayList<String> vistedNodes){
+        if (src.equals(dest)){
+            path.add(src);
+            return path;
+        }
+
+        if(vistedNodes.contains(src)){
+            return new ArrayList<>();
+        }
+
+        path.add(src);
+        vistedNodes.add(src);
+
+        for (String node : graph.get(src)) {
+            ArrayList<String> result = getPath(graph, node, dest, path, vistedNodes);
+            if(result.size() > 0){
+                return result;
+            }
+        }
+
+        path.remove(path.size() - 1);
+
         return new ArrayList<>();
     }
 
