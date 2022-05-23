@@ -4,8 +4,8 @@ import os
 
 CASE_DIR = os.path.join(os.path.dirname(__file__), "cases")
 
-c = 0
-q = 0
+MYCASES = 0
+MYQUERIES = 0
 
 test_cases = next(os.walk(CASE_DIR))[2]
 print(len(test_cases))
@@ -44,9 +44,9 @@ for case in sorted(test_cases):
             # for i, j in zip(user_path, user_path[1:]):
             #     if j not in adj[i]:
             #         raise ValueError(f"There is no train from {i} to {j}")
-            q += 1
-    c += 1
+            MYQUERIES += 1
+    MYCASES += 1
 
-raise Exception(f'Program finished after finishing {c} cases with {q} queries.')
+raise Exception(f'Program finished after finishing {MYCASES} cases with {MYQUERIES} queries.')
 
 print("EXIT", flush=True)
