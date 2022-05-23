@@ -19,6 +19,7 @@ public class Navigation {
             scanner.nextLine(); // Go to new line
 
             for (int j = 0; j < queries; j++) {
+                scanner.nextLine();
                 System.out.println("QUERY");
             }
         }
