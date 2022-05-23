@@ -32,14 +32,14 @@ for case in sorted(test_cases):
 
             try:
                 user_path = list(map(str.strip, input().split("->")))
-                if user_path[0] != src:
-                    raise ValueError("This path doesnt start at the starting station!")
-                if user_path[-1] != dst:
-                    raise ValueError("This path doesnt end at the destination!")
-                for i, j in zip(user_path, user_path[1:]):
-                    if j not in adj[i]:
-                        raise ValueError(f"There is no train from {i} to {j}")
-            except EOFError as e:
-                raise ValueError(f"EOFERROR: this is case {case} in query {_}, which is {line}.")
+            except EOFError:
+                raise Exception('Program stopped without completing all the tasks!')
+            if user_path[0] != src:
+                raise ValueError("This path doesnt start at the starting station!")
+            if user_path[-1] != dst:
+                raise ValueError("This path doesnt end at the destination!")
+            for i, j in zip(user_path, user_path[1:]):
+                if j not in adj[i]:
+                    raise ValueError(f"There is no train from {i} to {j}")
 
 print("EXIT", flush=True)
