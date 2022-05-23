@@ -40,13 +40,15 @@ public class Navigation {
             scanner.nextLine(); // Go to new line
 
             for (int j = 0; j < queries; j++) {
-                String[] line = scanner.nextLine().split(" -> ");
+                scanner.nextLine();
+                System.out.println("QUERY");
+                // String[] line = scanner.nextLine().split(" -> ");
                 
-                ArrayList<String> path = getPath(graph, line[0], line[1], new ArrayList<>());
+                // ArrayList<String> path = getPath(graph, line[0], line[1], new ArrayList<>());
 
-                if(path.size() > 0){
-                    System.out.println(String.join(" -> ", path));
-                }
+                // if(path.size() > 0){
+                //     System.out.println(String.join(" -> ", path));
+                // }
             }
         }
 
