@@ -1,7 +1,4 @@
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -10,11 +7,11 @@ public class Navigation {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        HashMap<String, ArrayList<String>> graph = new HashMap<>();
-
         int t = scanner.nextInt();
 
         for (int i = 0; i < t; i++) {
+            HashMap<String, ArrayList<String>> graph = new HashMap<>();
+
             int connections = scanner.nextInt();
             scanner.nextLine(); // Go to new line
             
