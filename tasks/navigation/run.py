@@ -47,6 +47,4 @@ for case in sorted(test_cases):
             MYQUERIES += 1
     MYCASES += 1
 
-raise Exception(f'Program finished after finishing {MYCASES} cases with {MYQUERIES} queries.')
-
 print("EXIT", flush=True)
